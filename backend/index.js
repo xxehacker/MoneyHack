@@ -22,7 +22,7 @@ mongoose
 
 // middlewares
 const corsOptions = {
-  origin: ["https://money-hack-fronend.vercel.app"],
+  origin: ["https://money-hack-fronend.vercel.app","https://www.moneyhack.tech" , "https://moneyhack.tech"],
   credentials: true,
   methods: ["GET", "POST", "PUT", "DELETE"],
 };
