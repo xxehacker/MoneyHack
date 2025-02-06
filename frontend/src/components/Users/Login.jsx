@@ -49,98 +49,119 @@ const Login = () => {
   });
 
   return (
-    <div className="flex items-center justify-center p-4 md:w-full min-h-[90vh] bg-gradient-to-r from-blue-500 to-blue-300">
-      <div className="bg-white shadow-lg rounded-lg flex max-w-4xl overflow-hidden flex-col-reverse md:flex-row">
-        {/* Left Section */}
-        <div className="w-full md:w-1/2 p-8 flex justify-center align-center flex-col">
-          <h2 className="text-4xl text-center font-bold text-gray-800 mb-6 uppercase underline">
-            Login
-          </h2>
+    // Login Form
+    <>
+      <h1 class="font-bold text-center text-red-600 bg-gray-100 p-6 rounded-lg shadow-lg">
+        Due to the limitations of our free hosting plan, new registrations may occasionally encounter errors.
+        <br />
+        Use the demo login details to explore the application:
+        <br />
+        <span class="block text-green-500">
+          <strong>Email:</strong> mridupawan201@gmail.com
+        </span>
+        <span class="block text-green-500">
+          <strong>Password:</strong> 12345678
+        </span>
+      </h1>
 
-          {isPending && <AlertMessage message="Logging in..." type="info" />}
-          {isError && <AlertMessage message={error?.response?.data?.message} type="error" />}
-          {isSuccess && (
-            <AlertMessage message="Login Successful!" type="success" />
-          )}
-
-          <form onSubmit={formik.handleSubmit}>
-            {/* Email Input */}
-            <div className="mb-4 ">
-              <div className="relative">
-                <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  placeholder="Email"
-                  className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={formik.values.email}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-              </div>
-              {formik.touched.email && formik.errors.email && (
-                <p className="text-red-500 text-sm mt-1">
-                  {formik.errors.email}
-                </p>
-              )}
-            </div>
-
-            {/* Password Input */}
-            <div className="mb-6">
-              <div className="relative">
-                <FaLock className="absolute left-3 top-3 text-gray-400" />
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  placeholder="Password"
-                  className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  value={formik.values.password}
-                  onChange={formik.handleChange}
-                  onBlur={formik.handleBlur}
-                />
-              </div>
-              {formik.touched.password && formik.errors.password && (
-                <p className="text-red-500 text-sm mt-1">
-                  {formik.errors.password}
-                </p>
-              )}
-            </div>
-
-            {/* Submit Button */}
-            <button
-              type="submit"
-              className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
-            >
+      <div className="flex items-center justify-center p-4 md:w-full min-h-[90vh] bg-gradient-to-r from-blue-500 to-blue-300">
+        <div className="bg-white shadow-lg rounded-lg flex max-w-4xl overflow-hidden flex-col-reverse md:flex-row">
+          {/* Left Section */}
+          <div className="w-full md:w-1/2 p-8 flex justify-center align-center flex-col">
+            <h2 className="text-4xl text-center font-bold text-gray-800 mb-6 uppercase underline">
               Login
-            </button>
-          </form>
+            </h2>
 
-          <p className="text-gray-600 text-sm mt-4 text-center">
-            Don’t have an account?{" "}
-            <a href="/register" className="text-blue-600">
-              Register
-            </a>
-          </p>
-        </div>
+            {isPending && <AlertMessage message="Logging in..." type="info" />}
+            {isError && (
+              <AlertMessage
+                message={error?.response?.data?.message}
+                type="error"
+              />
+            )}
+            {isSuccess && (
+              <AlertMessage message="Login Successful!" type="success" />
+            )}
 
-        {/* Right Section */}
-        <div className="w-full md:w-1/2 bg-green-400 flex items-center justify-center p-8 h-80 md:h-auto">
-          <div className="text-center">
-            <img
-              src={login}
-              alt="Illustration"
-              className="mb-4 max-w-full h-45 object-contain"
-            />
-            <h3 className="text-xl text-white font-semibold">Welcome Back</h3>
-            <p className="text-white mt-2 font-weight-bold">
-              Login to see your expenses and decide on your future.
+            <form onSubmit={formik.handleSubmit}>
+              {/* Email Input */}
+              <div className="mb-4 ">
+                <div className="relative">
+                  <FaEnvelope className="absolute left-3 top-3 text-gray-400" />
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    placeholder="Email"
+                    className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={formik.values.email}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                {formik.touched.email && formik.errors.email && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {formik.errors.email}
+                  </p>
+                )}
+              </div>
+
+              {/* Password Input */}
+              <div className="mb-6">
+                <div className="relative">
+                  <FaLock className="absolute left-3 top-3 text-gray-400" />
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    placeholder="Password"
+                    className="w-full p-3 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    value={formik.values.password}
+                    onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                  />
+                </div>
+                {formik.touched.password && formik.errors.password && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {formik.errors.password}
+                  </p>
+                )}
+              </div>
+
+              {/* Submit Button */}
+              <button
+                type="submit"
+                className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-200"
+              >
+                Login
+              </button>
+            </form>
+
+            <p className="text-gray-600 text-sm mt-4 text-center">
+              Don’t have an account?{" "}
+              <a href="/register" className="text-blue-600">
+                Register
+              </a>
             </p>
+          </div>
+
+          {/* Right Section */}
+          <div className="w-full md:w-1/2 bg-green-400 flex items-center justify-center p-8 h-80 md:h-auto">
+            <div className="text-center">
+              <img
+                src={login}
+                alt="Illustration"
+                className="mb-4 max-w-full h-45 object-contain"
+              />
+              <h3 className="text-xl text-white font-semibold">Welcome Back</h3>
+              <p className="text-white mt-2 font-weight-bold">
+                Login to see your expenses and decide on your future.
+              </p>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
