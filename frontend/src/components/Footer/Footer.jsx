@@ -1,56 +1,64 @@
-import { Mail, MapPin, Phone } from "lucide-react";
 import React from "react";
 import { FaGithub, FaInstagram, FaLinkedin, FaTwitter } from "react-icons/fa";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { Link } from "react-router-dom";
+
+const SOCIAL_LINKS = [
+  { icon: FaGithub, href: "https://github.com/xxehacker", key: "github" },
+  { icon: FaInstagram, href: "https://www.instagram.com/mridupawan0x1", key: "instagram" },
+  { icon: FaLinkedin, href: "https://www.linkedin.com/in/mridupawan503", key: "linkedin" },
+  { icon: FaTwitter, href: "https://twitter.com/xxehacker0x1", key: "twitter" },
+];
+
+const QUICK_LINKS = [
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Services", href: "/" },
+  { name: "Contact Us", href: "#contact" },
+  { name: "Portfolio", href: "https://mridupawan-portfolio.vercel.app/" },
+];
+
+const CONTACT_INFO = [
+  { icon: MapPin, text: "Guwahati, Assam", key: "location" },
+  { icon: Phone, text: "+91 7099550167", key: "phone" },
+  { icon: Mail, text: "mridupawan503@gmail.com", key: "email" },
+];
+
+const BOTTOM_LINKS = [
+  { name: "Privacy Policy", href: "#" },
+  { name: "Terms of Service", href: "#" },
+];
 
 const Footer = () => {
   return (
-    <footer className="bg-gradient-to-b from-[#39248f] to-black text-gray-300">
-      {/* Main Footer Content */}
+    <footer className="bg-gradient-to-br from-emerald-50 via-white to-blue-50 text-gray-900">
       <div className="max-w-7xl mx-auto px-4 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
-          {/* Company Info */}
           <div className="space-y-6">
-            <h3 className="text-2xl font-bold text-white">MoneyHack</h3>
-            <p className="text-sm text-gray-400 leading-relaxed">
-              We're dedicated to transforming financial management through
-              innovative solutions that empower individuals and businesses.
+            <h3 className="text-3xl font-black text-gray-900">
+              <span className="bg-gradient-to-r from-emerald-600 to-blue-600 bg-clip-text text-transparent">
+                MoneyHack
+              </span>
+            </h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              We're dedicated to transforming financial management through innovative solutions that empower individuals and businesses.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="hover:text-purple-500 transition-colors">
-                <Link to="https://github.com/xxehacker" target="_blank">
-                  <FaGithub size={20} />
+              {SOCIAL_LINKS.map(({ icon: Icon, href, key }) => (
+                <Link key={key} to={href} target="_blank" className="hover:text-emerald-500 transition-colors">
+                  <Icon size={20} />
                 </Link>
-              </a>
-              <a href="#" className="hover:text-purple-500 transition-colors">
-                <Link to="https://www.instagram.com/mridupawan0x1" target="_blank"><FaInstagram size={20} /></Link>
-              </a>
-              <a href="#" className="hover:text-purple-500 transition-colors">
-                <Link to="https://www.linkedin.com/in/mridupawan503" target="_blank"><FaLinkedin size={20} /></Link>
-              </a>
-              <a href="#" className="hover:text-purple-500 transition-colors">
-                <Link to="https://twitter.com/xxehacker0x1" target="_blank"><FaTwitter size={20} /></Link>
-              </a>
+              ))}
             </div>
           </div>
 
-          {/* Quick Links */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
+            <h3 className="text-lg font-bold text-gray-900">Quick Links</h3>
             <ul className="space-y-3">
-              {Object.entries({
-                Home: "/",
-                "About Us": "/about",
-                Services: "/",
-                "Contact Us": "#contact",
-                Portfolio: "https://mridupawan-portfolio.vercel.app/",
-              }).map(([name, href]) => (
+              {QUICK_LINKS.map(({ name, href }) => (
                 <li key={name}>
-                  <a
-                    href={href}
-                    className="text-sm hover:text-purple-500 transition-colors flex items-center gap-2"
-                  >
-                    <span className="h-px w-4 bg-purple-500/50"></span>
+                  <a href={href} className="text-sm text-gray-600 hover:text-emerald-500 transition-colors flex items-center gap-2">
+                    <span className="h-px w-4 bg-emerald-500"></span>
                     {name}
                   </a>
                 </li>
@@ -58,40 +66,30 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Contact Info */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-white">Contact Info</h3>
+            <h3 className="text-lg font-bold text-gray-900">Contact Info</h3>
             <ul className="space-y-4">
-              <li className="flex items-start gap-3 text-sm">
-                <MapPin className="w-5 h-5 text-purple-500 mt-1" />
-                <span>Guwahati, Assam</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Phone className="w-5 h-5 text-purple-500" />
-                <span>+91 7099550167</span>
-              </li>
-              <li className="flex items-center gap-3 text-sm">
-                <Mail className="w-5 h-5 text-purple-500" />
-                <span>mridupawan503@gmail.com</span>
-              </li>
+              {CONTACT_INFO.map(({ icon: Icon, text, key }) => (
+                <li key={key} className="flex items-start gap-3 text-sm text-gray-600">
+                  <Icon className="w-5 h-5 text-emerald-500 mt-1" />
+                  <span>{text}</span>
+                </li>
+              ))}
             </ul>
           </div>
 
-          {/* Newsletter */}
           <div className="space-y-6">
-            <h3 className="text-lg font-semibold text-white">Newsletter</h3>
-            <p className="text-sm text-gray-400">
-              Subscribe to our newsletter for the latest updates and insights.
-            </p>
+            <h3 className="text-lg font-bold text-gray-900">Newsletter</h3>
+            <p className="text-sm text-gray-600">Subscribe to our newsletter for the latest updates and insights.</p>
             <form className="space-y-3">
               <input
                 type="email"
                 placeholder="Enter your email"
-                className="w-full bg-white/[0.03] border border-white/[0.05] rounded-lg p-3 text-sm text-white placeholder-gray-500 focus:ring-2 focus:ring-purple-500/50 focus:border-purple-500/50 outline-none transition-all duration-300"
+                className="w-full bg-gray-50 border border-gray-200 rounded-lg p-3 text-sm text-gray-900 placeholder-gray-500 focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500 outline-none transition-all duration-300"
               />
               <button
                 type="submit"
-                className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-700 hover:to-purple-800 text-white py-3 px-6 rounded-lg text-sm font-medium transition-all duration-300 shadow-lg shadow-purple-500/25"
+                className="w-full bg-gradient-to-r from-emerald-600 to-blue-600 hover:from-emerald-500 hover:to-blue-500 text-white py-3 px-6 rounded-lg text-sm font-semibold transition-all duration-300 shadow-lg shadow-emerald-500/25"
               >
                 Subscribe
               </button>
@@ -100,35 +98,24 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* Bottom Bar */}
-      <div className="border-t border-white/5">
+      <div className="border-t border-gray-200">
         <div className="max-w-7xl mx-auto px-4 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-600">
               © {new Date().getFullYear()} MoneyHack. All rights reserved.
             </p>
-            <p className="text-sm text-gray-400">
+            <p className="text-sm text-gray-600">
               Made with ❤️ by{" "}
-              <Link
-                to="https://mridupawan-portfolio.vercel.app/"
-                className="text-purple-500 hover:underline"
-              >
+              <Link to="https://mridupawan-portfolio.vercel.app/" className="text-emerald-500 hover:underline">
                 Mridupawan Bordoloi
               </Link>
             </p>
             <div className="flex items-center gap-6">
-              <a
-                href="#"
-                className="text-sm text-gray-400 hover:text-purple-500 transition-colors"
-              >
-                Privacy Policy
-              </a>
-              <a
-                href="#"
-                className="text-sm text-gray-400 hover:text-purple-500 transition-colors"
-              >
-                Terms of Service
-              </a>
+              {BOTTOM_LINKS.map(({ name, href }) => (
+                <a key={name} href={href} className="text-sm text-gray-600 hover:text-emerald-500 transition-colors">
+                  {name}
+                </a>
+              ))}
             </div>
           </div>
         </div>
